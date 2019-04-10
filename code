@@ -1,0 +1,70 @@
+Step 1: Define words to tell Arduino 
+
+#define trigPin 7
+#define echoPin 6
+#define led  13
+#define led2 12
+#define led3 11 
+#define led4 10
+#define led5 9
+#define led6 8
+#define buzzer 3
+
+Step 2: Use pinMode to tel Arduino what pins the components are connected to
+
+void setup() {
+
+  Serial.begin (9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(led, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(led5, OUTPUT);
+  pinMode(led6, OUTPUT);
+  pinMode(buzzer, OUTPUT);}
+
+Step 3: This is the code that you are uploading to the Arduino.  The Arduino will run this code over and over 100s of times per second!
+
+void loop() {
+  long duration, distance;
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration=pulseIn(echoPin, HIGH);
+  distance=(duration/2)/29.1;
+
+if(distance <= 60 & distance > 50)
+{digitalWrite(led, HIGH);
+tone(3,261.63,200);}
+else {digitalWrite(led, LOW);}
+    
+if(distance<=50 & distance > 40)
+{digitalWrite(led2, HIGH);
+tone(3,293.66,200);}
+else {digitalWrite(led2, LOW);}
+
+if(distance <= 40 & distance > 30)
+{digitalWrite(led3, HIGH);
+tone(3,329.63,200);}
+else {digitalWrite(led3, LOW);}
+    
+if(distance<=30 & distance > 20)
+{digitalWrite(led4, HIGH);
+tone(3,349.23,200);}
+else {digitalWrite(led4, LOW);}
+
+if(distance <= 20 & distance > 10)
+{digitalWrite(led5, HIGH);
+tone(3,392.00,200);}
+else {digitalWrite(led5, LOW);}
+    
+if(distance<=10 & distance > 0)
+{digitalWrite(led6, HIGH);
+tone(3,440,200);}
+else {digitalWrite(led6, LOW);}
+
+}      
