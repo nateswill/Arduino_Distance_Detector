@@ -66,5 +66,4 @@ if(distance<=10 & distance > 0)
 {digitalWrite(led6, HIGH);
 tone(3,440,200);}
 else {digitalWrite(led6, LOW);}
-
 }      
